@@ -95,8 +95,13 @@ export default class Details extends Component {
     }
 
     _handleDatePicked = (date) => {
+      var day = date.getDate();
+      var monthIndex = date.getMonth();
+      var year = date.getFullYear();
+
+      var finalDate = (monthIndex+1) + '/' + day + '/' + year;
         this.setState({
-            birthDay: date.toString()
+            birthDay: finalDate
         })
         this._hideDateTimePicker();
     };

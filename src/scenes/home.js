@@ -24,6 +24,7 @@ export default class Home extends Component {
 
         this.unsubscribe = null;
         let userLocaleCountryCode = DeviceInfo.getDeviceCountry()
+        alert(userLocaleCountryCode)
         const userCountryData = getAllCountries()
             .filter(country => Countries.includes(country.cca2))
             .filter(country => country.cca2 === userLocaleCountryCode)
