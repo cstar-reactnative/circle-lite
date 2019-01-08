@@ -24,7 +24,6 @@ export default class Home extends Component {
 
         this.unsubscribe = null;
         let userLocaleCountryCode = DeviceInfo.getDeviceCountry()
-        alert(userLocaleCountryCode)
         const userCountryData = getAllCountries()
             .filter(country => Countries.includes(country.cca2))
             .filter(country => country.cca2 === userLocaleCountryCode)
@@ -133,7 +132,7 @@ export default class Home extends Component {
                         <View style={inputContainer}>
                             <View style={{ width: '25%', alignItems: 'center', justifyContent: 'center' }}>
                                 <CountryPicker
-                                    countryList={Countries}
+                                    //countryList={Countries}
                                     onChange={value => {
                                         this.setState({ cca2: value.cca2, callingCode: value.callingCode })
                                     }}
