@@ -5,7 +5,7 @@ import {
     qrCodeDiv, detailsTopDiv, detailsBottomDiv
 } from '../styling';
 import { qr } from '../assets'
-
+import { StackActions, NavigationActions } from 'react-navigation';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import QRCode from 'react-native-qrcode';
@@ -59,7 +59,6 @@ export default class Details extends Component {
     componentWillUnmount() {
         if (this.unsubscribe) this.unsubscribe();
         if (this.unsubscribe2) this.unsubscribe();
-        firebaseService.auth().signOut()
     }
 
     saveDetails = () => {
@@ -83,6 +82,15 @@ export default class Details extends Component {
             alert('something went wrong');
         }
 
+    }
+
+    logout = () => {
+        firebaseService.auth().signOut()
+        const resetAction = StackActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: 'Home' })],
+        });
+        this.props.navigation.dispatch(resetAction);
     }
 
 
@@ -150,6 +158,11 @@ export default class Details extends Component {
                             onPress={() => this.saveDetails()}
                             style={buttonDiv}>
                             <Text style={buttonText}>Save details</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => this.logout()}
+                            style={[buttonDiv,{marginTop:20}]}>
+                            <Text style={buttonText}>Logout</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

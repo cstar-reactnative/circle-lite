@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native'
 import {
-    container, deviceWidth, deviceHeight, buttonDiv, buttonText, logo, logoText, logoContainer,
+    buttonDiv, buttonText, logo, logoText, logoContainer,
     bottomDivLogin, inputTitle, bottomCardLogin, inputContainer, input
 } from '../styling';
-import { appIcon } from '../assets'
+import { appIcon,back } from '../assets'
 import firebaseService from '../utility/firebase';
 import firebase from 'react-native-firebase';
 
@@ -25,7 +25,7 @@ export default class Confirm extends Component {
 
     componentDidMount() {
         const { params } = this.props.navigation.state;
-        let confirmResult = params.result;
+        let confirmResult = params ? params.result : null;
 
         this.unsubscribe = firebaseService.auth().onAuthStateChanged((user) => {
             if (user) {
@@ -38,8 +38,8 @@ export default class Confirm extends Component {
             }
         });
         this.setState({ confirmResult: confirmResult });
-        console.log("vId", confirmResult.verificationId)
-        console.log("cresult", confirmResult)
+        // console.log("vId", confirmResult.verificationId)
+        // console.log("cresult", confirmResult)
     }
 
     componentWillUnmount() {
@@ -64,6 +64,10 @@ export default class Confirm extends Component {
 
         return (
             <KeyboardAwareScrollView >
+                <TouchableOpacity onPress={()=> this.props.navigation.goBack()} style={{width:65, position:'absolute',top:20, left:15, flexWrap:'wrap', flexDirection:'row',justifyContent:'center', alignItems:'center'}}>
+                        <Image source={back} style={{width:25, height:25}}/>
+                        <Text style={{fontSize:18}}>Back</Text>
+                    </TouchableOpacity>
                 <View style={logoContainer}>
                     <Image source={appIcon} style={logo} />
                     <Text style={logoText}>CIRCLE</Text>
