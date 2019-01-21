@@ -26,15 +26,34 @@ export default class Details extends Component {
             isDatePicker: false,
             user: null,
             userData: null,
+            timer: null,
+            counter:  new Date().getTime()
         }
 
         this._showDateTimePicker = this._showDateTimePicker.bind(this)
         this._hideDateTimePicker = this._hideDateTimePicker.bind(this)
         this._handleDatePicked = this._handleDatePicked.bind(this)
+        this.tick = this.tick.bind(this)
 
     }
 
+   
+    
+      
+    
+       
+    
+      tick() {
+
+        //alert("Current timer : " +this.state.counter)
+        this.setState({
+          counter: new Date().getTime()
+        });
+      }
+
     componentDidMount() {
+        let timer = setInterval(this.tick, 5000);
+        this.setState({timer});
         this.unsubscribe = firebaseService.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.setState({ user: user.toJSON() });
@@ -57,6 +76,7 @@ export default class Details extends Component {
     }
 
     componentWillUnmount() {
+        this.clearInterval(this.state.timer);
         if (this.unsubscribe) this.unsubscribe();
         if (this.unsubscribe2) this.unsubscribe();
     }
@@ -118,13 +138,14 @@ export default class Details extends Component {
 
     render() {
 
-        const { isDatePicker, birthDay, firstName, lastName, userData } = this.state;
+        const { isDatePicker, birthDay, firstName, lastName, userData,counter ,user} = this.state;
+        const qrString = userData?  user.uid + '.' + counter:null
         return (
             <KeyboardAwareScrollView>
                 <View style={detailsTopDiv}>
                     <View style={qrCodeDiv}>
                         {userData && <QRCode
-                            value={this.state.user.uid}
+                            value={qrString}
                             size={250}
                             bgColor='rgb(160,54,255)'
                             fgColor='white' />}
