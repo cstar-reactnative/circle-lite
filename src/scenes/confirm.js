@@ -48,15 +48,17 @@ export default class Confirm extends Component {
 
     confirmCode = () => {
         const { codeInput, confirmResult } = this.state;
-
-        const credential = firebase.auth.PhoneAuthProvider.credential(confirmResult.verificationId, codeInput);
+        if (codeInput){
+            const credential = firebase.auth.PhoneAuthProvider.credential(confirmResult.verificationId, codeInput);
         firebaseService.auth().signInWithCredential(credential).then(result => {
             console.log(result)
             this.props.navigation.navigate('Details')
         }).catch(error => {
             console.log(error)
-            alert(JSON.stringify(error))
         })
+        }else{
+            alert('Please enter Confirmation Code')
+        }
     };
 
     render() {
