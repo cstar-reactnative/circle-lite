@@ -93,7 +93,7 @@ export default class Home extends Component {
                         case firebase.auth.PhoneAuthState.AUTO_VERIFIED:
                             console.log('auto verified on android');
                             console.log(phoneAuthSnapshot);
-                            alert('Success: Verified Automatically');
+                            //alert('Success: Verified Automatically');
                             const { verificationId, code } = phoneAuthSnapshot;
                             const credential = firebase.auth.PhoneAuthProvider.credential(verificationId, code);
                             firebaseService.auth().signInWithCredential(credential).then(result => {

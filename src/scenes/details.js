@@ -76,14 +76,14 @@ export default class Details extends Component {
     }
 
     componentWillUnmount() {
-        this.clearInterval(this.state.timer);
+        clearInterval(this.state.timer);
         if (this.unsubscribe) this.unsubscribe();
         if (this.unsubscribe2) this.unsubscribe();
     }
 
     saveDetails = () => {
         const { user, firstName, lastName, birthDay } = this.state;
-        console.log('user', user)
+       // console.log('user', user)
         if (user) {
             var status = {
                 mobile: user.phoneNumber,
