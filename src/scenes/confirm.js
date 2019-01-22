@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native'
+import { SafeAreaView, View, Text, Image, TouchableOpacity, TextInput } from 'react-native'
 import {
     buttonDiv, buttonText, logo, logoText, logoContainer,
     bottomDivLogin, inputTitle, bottomCardLogin, inputContainer, input
@@ -66,35 +66,37 @@ export default class Confirm extends Component {
         const { codeInput } = this.state;
 
         return (
-            <KeyboardAwareScrollView >
-                <TouchableOpacity onPress={()=> this.props.navigation.goBack()} style={{width:70, position:'absolute',top:20, left:15, flexWrap:'wrap', flexDirection:'row',justifyContent:'center', alignItems:'center'}}>
-                        <Image source={back} style={{width:25, height:25}}/>
-                        <Text style={{fontSize:18}}>Back</Text>
-                    </TouchableOpacity>
-                <View style={logoContainer}>
-                    <Image source={appIcon} style={logo} />
-                    <Text style={logoText}>CIRCLE</Text>
-                </View>
-                <View style={bottomDivLogin}>
-                    <View style={bottomCardLogin}>
-                        <Text style={inputTitle}>Confirmation Code</Text>
-                        <View style={inputContainer}>
-                            <TextInput
-                                keyboardType={'number-pad'}
-                                onChangeText={(codeInput) => this.setState({ codeInput })}
-                                placeholder={'OTP....'}
-                                underlineColorAndroid="transparent"
-                                value={codeInput} style={input}
-                            />
-                        </View>
-                        <TouchableOpacity
-                            onPress={this.confirmCode}
-                            style={buttonDiv}>
-                            <Text style={buttonText}>Next</Text>
+            <SafeAreaView style={{flex:1}}>
+                <KeyboardAwareScrollView >
+                    <TouchableOpacity onPress={()=> this.props.navigation.goBack()} style={{width:70, position:'absolute',top:20, left:15, flexWrap:'wrap', flexDirection:'row',justifyContent:'center', alignItems:'center'}}>
+                            <Image source={back} style={{width:25, height:25}}/>
+                            <Text style={{fontSize:18}}>Back</Text>
                         </TouchableOpacity>
+                    <View style={logoContainer}>
+                        <Image source={appIcon} style={logo} />
+                        <Text style={logoText}>CIRCLE</Text>
                     </View>
-                </View>
-            </KeyboardAwareScrollView>
+                    <View style={bottomDivLogin}>
+                        <View style={bottomCardLogin}>
+                            <Text style={inputTitle}>Confirmation Code</Text>
+                            <View style={inputContainer}>
+                                <TextInput
+                                    keyboardType={'number-pad'}
+                                    onChangeText={(codeInput) => this.setState({ codeInput })}
+                                    placeholder={'OTP....'}
+                                    underlineColorAndroid="transparent"
+                                    value={codeInput} style={input}
+                                />
+                            </View>
+                            <TouchableOpacity
+                                onPress={this.confirmCode}
+                                style={buttonDiv}>
+                                <Text style={buttonText}>Next</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </KeyboardAwareScrollView>
+            </SafeAreaView>
         )
     }
 
