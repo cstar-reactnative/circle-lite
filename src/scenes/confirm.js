@@ -55,6 +55,7 @@ export default class Confirm extends Component {
             this.props.navigation.navigate('Details')
         }).catch(error => {
             console.log(error)
+            alert('Invalid Confirmation Code')
         })
         }else{
             alert('Please enter Confirmation Code')
@@ -66,7 +67,7 @@ export default class Confirm extends Component {
 
         return (
             <KeyboardAwareScrollView >
-                <TouchableOpacity onPress={()=> this.props.navigation.goBack()} style={{width:65, position:'absolute',top:20, left:15, flexWrap:'wrap', flexDirection:'row',justifyContent:'center', alignItems:'center'}}>
+                <TouchableOpacity onPress={()=> this.props.navigation.goBack()} style={{width:70, position:'absolute',top:20, left:15, flexWrap:'wrap', flexDirection:'row',justifyContent:'center', alignItems:'center'}}>
                         <Image source={back} style={{width:25, height:25}}/>
                         <Text style={{fontSize:18}}>Back</Text>
                     </TouchableOpacity>
