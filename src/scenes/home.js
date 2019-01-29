@@ -172,7 +172,7 @@ url= 'https://circleparties.com/privacy'
                             <Text style={buttonText}>Next</Text>
                         </TouchableOpacity>
                     </View>
-                    <Text style={{ textAlign: 'center', fontSize: 15, marginVertical: 15 }}>By logging in you accept the terms of the <Text onPress={()=>this.openURL(false)} style={{ fontWeight: 'bold',color:'blue' }}>user agreement</Text> and the <Text onPress={()=>this.openURL(true)}  style={{ fontWeight: 'bold' ,color:'blue'}}>privacy statements</Text></Text>
+                    <Text style={{ textAlign: 'center', fontSize: 15, marginVertical: 15 }}>By logging in you accept the terms of the <Text onPress={()=>this.openURL(false)} style={{ fontWeight: 'bold',color:'rgb(160,54,255)' }}>user agreement</Text> and the <Text onPress={()=>this.openURL(true)}  style={{ fontWeight: 'bold' ,color:'rgb(160,54,255)'}}>privacy statements</Text></Text>
                 </View>
             </KeyboardAwareScrollView>
         )
