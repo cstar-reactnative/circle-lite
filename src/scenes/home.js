@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, Image, TouchableOpacity, TextInput,Linking } from 'react-native'
 import {
     container, deviceWidth, deviceHeight, buttonDiv, buttonText, logo, logoText, logoContainer, bottomDivLogin,
     inputTitle, bottomCardLogin, inputContainer, input
@@ -116,7 +116,25 @@ export default class Home extends Component {
         }
 
     }
+openURL(isPolicy){
+ 
+var url='https://circleparties.com/terms'
 
+if(isPolicy)
+url= 'https://circleparties.com/privacy'
+
+    Linking.canOpenURL(url)
+    .then((supported) => {
+      if (!supported) {
+        console.log("Can't handle url: " + url);
+      } else {
+        return Linking.openURL(url);
+      }
+    })
+    .catch((err) => console.error('An error occurred', err));
+ 
+
+}
     render() {
 
         const { mobile } = this.state;
@@ -154,7 +172,7 @@ export default class Home extends Component {
                             <Text style={buttonText}>Next</Text>
                         </TouchableOpacity>
                     </View>
-                    <Text style={{ textAlign: 'center', fontSize: 15, marginVertical: 15 }}>By logging in you accept the terms of the <Text style={{ fontWeight: 'bold' }}>user agreement</Text> abd the <Text style={{ fontWeight: 'bold' }}>privacy statements</Text></Text>
+                    <Text style={{ textAlign: 'center', fontSize: 15, marginVertical: 15 }}>By logging in you accept the terms of the <Text onPress={()=>this.openURL(false)} style={{ fontWeight: 'bold',color:'blue' }}>user agreement</Text> and the <Text onPress={()=>this.openURL(true)}  style={{ fontWeight: 'bold' ,color:'blue'}}>privacy statements</Text></Text>
                 </View>
             </KeyboardAwareScrollView>
         )

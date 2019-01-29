@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native'
 import {
     deviceHeight, deviceWidth, buttonDiv, buttonText, inputTitle, input, inputBorder, detailsBottomCard,
-    qrCodeDiv, detailsTopDiv, detailsBottomDiv
+    qrCodeDiv, detailsTopDiv, detailsBottomDiv,logoContainer,logo
 } from '../styling';
-import { qr } from '../assets'
+import { qr,instruction } from '../assets'
 import { StackActions, NavigationActions } from 'react-navigation';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import DateTimePicker from 'react-native-modal-datetime-picker';
@@ -149,6 +149,16 @@ export default class Details extends Component {
                             size={250}
                             bgColor='rgb(160,54,255)'
                             fgColor='white' />}
+                            {!userData &&
+                            
+
+<View style={{  flexWrap:'wrap', flexDirection:'column',justifyContent:'center', alignItems:'center'}} >
+                        <Image source={instruction}/>
+                        <Text style={inputTitle}>Enter your details below</Text>
+                    </View>
+
+                              
+                            }
                     </View>
                 </View>
                 <View style={detailsBottomDiv}>
