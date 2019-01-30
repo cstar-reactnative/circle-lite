@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, Image, TouchableOpacity, TextInput, SafeAreaView } from 'react-native'
 import {
     deviceHeight, deviceWidth, buttonDiv, buttonText, inputTitle, input, inputBorder, detailsBottomCard,
-    qrCodeDiv, detailsTopDiv, detailsBottomDiv,logoContainer,logo
+    qrCodeDiv, detailsTopDiv, detailsBottomDiv, logoContainer, logo
 } from '../styling';
-import { qr,instruction } from '../assets'
+import { qr, instruction } from '../assets'
 import { StackActions, NavigationActions } from 'react-navigation';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import DateTimePicker from 'react-native-modal-datetime-picker';
@@ -27,7 +27,7 @@ export default class Details extends Component {
             user: null,
             userData: null,
             timer: null,
-            counter:  new Date().getTime()
+            counter: new Date().getTime()
         }
 
         this._showDateTimePicker = this._showDateTimePicker.bind(this)
@@ -37,23 +37,17 @@ export default class Details extends Component {
 
     }
 
-   
-    
-      
-    
-       
-    
-      tick() {
+    tick() {
 
         //alert("Current timer : " +this.state.counter)
         this.setState({
-          counter: new Date().getTime()
+            counter: new Date().getTime()
         });
-      }
+    }
 
     componentDidMount() {
         let timer = setInterval(this.tick, 5000);
-        this.setState({timer});
+        this.setState({ timer });
         this.unsubscribe = firebaseService.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.setState({ user: user.toJSON() });
@@ -83,7 +77,7 @@ export default class Details extends Component {
 
     saveDetails = () => {
         const { user, firstName, lastName, birthDay } = this.state;
-       // console.log('user', user)
+        // console.log('user', user)
         if (user) {
             var status = {
                 mobile: user.phoneNumber,
@@ -107,8 +101,8 @@ export default class Details extends Component {
     logout = () => {
         firebaseService.auth().signOut()
         const resetAction = StackActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({ routeName: 'Home' })],
+            index: 0,
+            actions: [NavigationActions.navigate({ routeName: 'Home' })],
         });
         this.props.navigation.dispatch(resetAction);
     }
@@ -123,11 +117,11 @@ export default class Details extends Component {
     }
 
     _handleDatePicked = (date) => {
-      var day = date.getDate();
-      var monthIndex = date.getMonth();
-      var year = date.getFullYear();
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
 
-      var finalDate = (monthIndex+1) + '/' + day + '/' + year;
+        var finalDate = (monthIndex + 1) + '/' + day + '/' + year;
         this.setState({
             birthDay: finalDate
         })
@@ -138,71 +132,71 @@ export default class Details extends Component {
 
     render() {
 
-        const { isDatePicker, birthDay, firstName, lastName, userData,counter ,user} = this.state;
-        const qrString = userData?  user.uid + '.' + counter:null
+        const { isDatePicker, birthDay, firstName, lastName, userData, counter, user } = this.state;
+        const qrString = userData ? user.uid + '.' + counter : null
         return (
-            <KeyboardAwareScrollView>
-                <View style={detailsTopDiv}>
-                    <View style={qrCodeDiv}>
-                        {userData && <QRCode
-                            value={qrString}
-                            size={250}
-                            bgColor='rgb(160,54,255)'
-                            fgColor='white' />}
+            <SafeAreaView style={{ flex: 1 }}>
+                <KeyboardAwareScrollView>
+                    <View style={detailsTopDiv}>
+                        <View style={qrCodeDiv}>
+                            {userData && <QRCode
+                                value={qrString}
+                                size={250}
+                                bgColor='rgb(160,54,255)'
+                                fgColor='white' />}
                             {!userData &&
-                            
-
-<View style={{  flexWrap:'wrap', flexDirection:'column',justifyContent:'center', alignItems:'center'}} >
-                        <Image source={instruction}/>
-                        <Text style={inputTitle}>Enter your details below</Text>
-                    </View>
-
-                              
+                                <View style={{ flexWrap: 'wrap', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Image source={instruction} />
+                                    <Text style={inputTitle}>Enter your details below</Text>
+                                </View>
                             }
+                        </View>
                     </View>
-                </View>
-                <View style={detailsBottomDiv}>
-                    <View style={detailsBottomCard}>
-                        <Text style={inputTitle}>Personal details</Text>
-                        <TextInput
-                            value={firstName}
-                            onChangeText={(firstName) => this.setState({ firstName })}
-                            placeholder={'First name'}
-                            underlineColorAndroid="transparent"
-                            style={[input, inputBorder, { marginTop: 30, marginBottom: 10 }]}
-                        />
-                        <TextInput
-                            value={lastName}
-                            onChangeText={(lastName) => this.setState({ lastName })}
-                            placeholder={'Last name'}
-                            underlineColorAndroid="transparent"
-                            style={[input, inputBorder, { marginBottom: 10 }]}
-                        />
-                        <TextInput
-                            value={birthDay}
-                            onFocus={this._showDateTimePicker}
-                            placeholder={'Birthday'}
-                            underlineColorAndroid="transparent"
-                            style={[input, inputBorder, { marginBottom: 20 }]}
-                        />
-                        <TouchableOpacity
-                            onPress={() => this.saveDetails()}
-                            style={buttonDiv}>
-                            <Text style={buttonText}>Save details</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={() => this.logout()}
-                            style={[buttonDiv,{marginTop:20}]}>
-                            <Text style={buttonText}>Logout</Text>
-                        </TouchableOpacity>
+                    <View style={detailsBottomDiv}>
+                        <View style={detailsBottomCard}>
+                            <Text style={inputTitle}>Personal details</Text>
+                            <TextInput
+                                value={firstName}
+                                onChangeText={(firstName) => this.setState({ firstName })}
+                                placeholder={'First name'}
+                                underlineColorAndroid="transparent"
+                                style={[input, inputBorder, { marginTop: 30, marginBottom: 10 }]}
+                            />
+                            <TextInput
+                                value={lastName}
+                                onChangeText={(lastName) => this.setState({ lastName })}
+                                placeholder={'Last name'}
+                                underlineColorAndroid="transparent"
+                                style={[input, inputBorder, { marginBottom: 10 }]}
+                            />
+                            <TextInput
+                                value={birthDay}
+                                onFocus={this._showDateTimePicker}
+                                placeholder={'Birthday'}
+                                underlineColorAndroid="transparent"
+                                style={[input, inputBorder, { marginBottom: 20 }]}
+                            />
+                            <TouchableOpacity
+                                onPress={() => this.saveDetails()}
+                                style={buttonDiv}>
+                                <Text style={buttonText}>Save details</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ paddingHorizontal: 20 }}>
+                            <TouchableOpacity
+                                onPress={() => this.logout()}
+                                style={[buttonDiv, { marginTop: 20 }]}>
+                                <Text style={buttonText}>Logout</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                </View>
-                <DateTimePicker
-                    isVisible={isDatePicker}
-                    onConfirm={this._handleDatePicked}
-                    onCancel={this._hideDateTimePicker}
-                />
-            </KeyboardAwareScrollView>
+                    <DateTimePicker
+                        isVisible={isDatePicker}
+                        onConfirm={this._handleDatePicked}
+                        onCancel={this._hideDateTimePicker}
+                    />
+                </KeyboardAwareScrollView>
+            </SafeAreaView>
         )
     }
 

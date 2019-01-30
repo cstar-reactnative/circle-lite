@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput,Linking } from 'react-native'
+import { View, Text, Image, TouchableOpacity, TextInput, Linking, SafeAreaView } from 'react-native'
 import {
     container, deviceWidth, deviceHeight, buttonDiv, buttonText, logo, logoText, logoContainer, bottomDivLogin,
     inputTitle, bottomCardLogin, inputContainer, input
@@ -116,65 +116,67 @@ export default class Home extends Component {
         }
 
     }
-openURL(isPolicy){
- 
-var url='https://circleparties.com/terms'
+    openURL(isPolicy) {
 
-if(isPolicy)
-url= 'https://circleparties.com/privacy'
+        var url = 'https://circleparties.com/terms'
 
-    Linking.canOpenURL(url)
-    .then((supported) => {
-      if (!supported) {
-        console.log("Can't handle url: " + url);
-      } else {
-        return Linking.openURL(url);
-      }
-    })
-    .catch((err) => console.error('An error occurred', err));
- 
+        if (isPolicy)
+            url = 'https://circleparties.com/privacy'
 
-}
+        Linking.canOpenURL(url)
+            .then((supported) => {
+                if (!supported) {
+                    console.log("Can't handle url: " + url);
+                } else {
+                    return Linking.openURL(url);
+                }
+            })
+            .catch((err) => console.error('An error occurred', err));
+
+
+    }
     render() {
 
         const { mobile } = this.state;
         return (
-            <KeyboardAwareScrollView >
-                <View style={logoContainer}>
-                    <Image source={appIcon} style={logo} />
-                    <Text style={logoText}>CIRCLE</Text>
-                </View>
-                <View style={bottomDivLogin}>
-                    <View style={bottomCardLogin}>
-                        <Text style={inputTitle}>Phone Number</Text>
-                        <View style={inputContainer}>
-                            <View style={{ width: '25%', alignItems: 'center', justifyContent: 'center' }}>
-                                <CountryPicker
-                                    //countryList={Countries}
-                                    onChange={value => {
-                                        this.setState({ cca2: value.cca2, callingCode: value.callingCode })
-                                    }}
-                                    cca2={this.state.cca2}
-                                    translation="eng"
-                                />
-                            </View>
-                            <TextInput
-                                keyboardType={'number-pad'}
-                                onChangeText={(mobile) => this.setState({ mobile })}
-                                placeholder={'mobile number'}
-                                underlineColorAndroid="transparent"
-                                value={mobile}
-                                style={[input, { width: '75%' }]} />
-                        </View>
-                        <TouchableOpacity
-                            onPress={this.login}
-                            style={buttonDiv}>
-                            <Text style={buttonText}>Next</Text>
-                        </TouchableOpacity>
+            <SafeAreaView style={{ flex: 1 }}>
+                <KeyboardAwareScrollView >
+                    <View style={logoContainer}>
+                        <Image source={appIcon} style={logo} />
+                        <Text style={logoText}>CIRCLE</Text>
                     </View>
-                    <Text style={{ textAlign: 'center', fontSize: 15, marginVertical: 15 }}>By logging in you accept the terms of the <Text onPress={()=>this.openURL(false)} style={{ fontWeight: 'bold',color:'rgb(160,54,255)' }}>user agreement</Text> and the <Text onPress={()=>this.openURL(true)}  style={{ fontWeight: 'bold' ,color:'rgb(160,54,255)'}}>privacy statements</Text></Text>
-                </View>
-            </KeyboardAwareScrollView>
+                    <View style={bottomDivLogin}>
+                        <View style={bottomCardLogin}>
+                            <Text style={inputTitle}>Phone Number</Text>
+                            <View style={inputContainer}>
+                                <View style={{ width: '25%', alignItems: 'center', justifyContent: 'center' }}>
+                                    <CountryPicker
+                                        //countryList={Countries}
+                                        onChange={value => {
+                                            this.setState({ cca2: value.cca2, callingCode: value.callingCode })
+                                        }}
+                                        cca2={this.state.cca2}
+                                        translation="eng"
+                                    />
+                                </View>
+                                <TextInput
+                                    keyboardType={'number-pad'}
+                                    onChangeText={(mobile) => this.setState({ mobile })}
+                                    placeholder={'mobile number'}
+                                    underlineColorAndroid="transparent"
+                                    value={mobile}
+                                    style={[input, { width: '75%' }]} />
+                            </View>
+                            <TouchableOpacity
+                                onPress={this.login}
+                                style={buttonDiv}>
+                                <Text style={buttonText}>Next</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <Text style={{ textAlign: 'center', fontSize: 15, marginVertical: 15 }}>By logging in you accept the terms of the <Text onPress={() => this.openURL(false)} style={{ fontWeight: 'bold', color: 'rgb(160,54,255)' }}>user agreement</Text> and the <Text onPress={() => this.openURL(true)} style={{ fontWeight: 'bold', color: 'rgb(160,54,255)' }}>privacy statements</Text></Text>
+                    </View>
+                </KeyboardAwareScrollView>
+            </SafeAreaView>
         )
     }
 

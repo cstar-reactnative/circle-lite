@@ -41,12 +41,12 @@
 		6D1A9E0D404B5BC4598838B9 /* libPods-CircleLiteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E4B3AE2B5D2B1CD4D0F852 /* libPods-CircleLiteTests.a */; };
 		6F44635A5D614AADB0084B0E /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 807AF592BA3A47B788FBE8CF /* libRNDeviceInfo.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		953E77FC2201B21400EF5C7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 953E77D22201B21400EF5C7B /* GoogleService-Info.plist */; };
 		A4022540731A0B4842FBD379 /* libPods-CircleLite-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87315ACD2E4441D7E40A4E73 /* libPods-CircleLite-tvOS.a */; };
 		A887DA93C7017DF086EBADED /* libPods-CircleLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBAB3945AEA4735126496FD5 /* libPods-CircleLite.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D91504692C054CBDB8024575 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF90192D50D4806B41D3661 /* libRNGestureHandler.a */; };
 		DAC3FDE194E84ABB98240A0F /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B42014ED82460CA48FADDC /* libRNFirebase.a */; };
-		E671C98A21E3829A00388E6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E671C98921E3829A00388E6C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -390,6 +390,7 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		87315ACD2E4441D7E40A4E73 /* libPods-CircleLite-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CircleLite-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF90192D50D4806B41D3661 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
+		953E77D22201B21400EF5C7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		97F851AF4C5A664A859B519E /* Pods-CircleLite-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleLite-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CircleLite-tvOS/Pods-CircleLite-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		A5B42014ED82460CA48FADDC /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -397,7 +398,6 @@
 		CBAB3945AEA4735126496FD5 /* libPods-CircleLite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CircleLite.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36770545C8E6850C4DE3BA4 /* Pods-CircleLite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleLite.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CircleLite/Pods-CircleLite.debug.xcconfig"; sourceTree = "<group>"; };
 		D7996836687E4E3375B11944 /* Pods-CircleLiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleLiteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CircleLiteTests/Pods-CircleLiteTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E671C98921E3829A00388E6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E9932DE0552641458A0F1D6B /* libPods-CircleLite-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CircleLite-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3ED784CF40D6DE10E941E4 /* Pods-CircleLite-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleLite-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CircleLite-tvOSTests/Pods-CircleLite-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -549,7 +549,7 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
-				E671C98921E3829A00388E6C /* GoogleService-Info.plist */,
+				953E77D22201B21400EF5C7B /* GoogleService-Info.plist */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -1221,9 +1221,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				953E77FC2201B21400EF5C7B /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				E671C98A21E3829A00388E6C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
